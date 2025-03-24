@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Books = () => {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    fetch("../../../public/booksData.json")
+      .then((res) => res.json())
+      .then((data) => setBooks(data));
+  }, []);
+
   return (
     <div>
-      <h2>Books</h2>
+      <h2 className="text-5xl font-bold text-center">Books</h2>
+      <p>{books.length}</p>
     </div>
   );
 };
