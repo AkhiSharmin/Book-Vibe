@@ -23,6 +23,17 @@ const BookDetail = () => {
     tags,
   } = book;
 
+  /**
+   * 1. understand what to store or save : => bookId
+   * 2. Where to store: database
+   * 3. Array, List , Collection
+   * 4. check: if the book is already in the readList
+   * 5. if not, then add the book to the list
+   * 6. if yes, do not added the book
+   */
+
+  const handleMarkAsRead = () => {};
+
   return (
     <div>
       <h2>Book Number: {bookId}</h2>
@@ -52,8 +63,13 @@ const BookDetail = () => {
           <p>Year of Publishing: {yearOfPublishing}</p>
           <p>Rating: {rating}</p>
           <div className="card-actions">
-            <button className="btn btn-outline mr-2 btn-primary">Read</button>
-            <button className="btn btn-primary">WishList</button>
+            <button
+              onClick={handleMarkAsRead}
+              className="btn btn-outline mr-2 btn-primary"
+            >
+              Mark as Read
+            </button>
+            <button className="btn btn-primary">Add to WishList</button>
           </div>
         </div>
       </div>
