@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToStoreReadList } from "../../utility/addToDb";
 
 const BookDetail = () => {
   const { bookId } = useParams();
@@ -32,7 +33,9 @@ const BookDetail = () => {
    * 6. if yes, do not added the book
    */
 
-  const handleMarkAsRead = () => {};
+  const handleMarkAsRead = (id) => {
+    addToStoreReadList(id);
+  };
 
   return (
     <div>
@@ -64,7 +67,7 @@ const BookDetail = () => {
           <p>Rating: {rating}</p>
           <div className="card-actions">
             <button
-              onClick={handleMarkAsRead}
+              onClick={() => handleMarkAsRead(bookId)}
               className="btn btn-outline mr-2 btn-primary"
             >
               Mark as Read
