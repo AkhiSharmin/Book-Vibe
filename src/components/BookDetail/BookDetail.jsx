@@ -1,7 +1,62 @@
+import React from "react";
+import { useLoaderData, useParams } from "react-router-dom";
+
 const BookDetail = () => {
+  const { bookId } = useParams();
+  const data = useLoaderData();
+  const id = parseInt(bookId);
+  //   console.log(typeof bookId, typeof id, typeof data[0].bookId);
+
+  const book = data.find((book) => book.bookId === id);
+  console.log(book);
+
+  const {
+    bookName,
+    author,
+    category,
+    image,
+    review,
+    totalPages,
+    rating,
+    yearOfPublishing,
+    publisher,
+    tags,
+  } = book;
+
   return (
     <div>
-      <h2>Book Details</h2>
+      <h2>Book Number: {bookId}</h2>
+      <div className="card lg:card-side bg-base-100 shadow-sm">
+        <figure>
+          <img src={image} alt="Album" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title italic text-5">{bookName}</h2>
+          <p>By: {author}</p>
+          <hr />
+          <p>{category}</p>
+          <hr />
+          <p>
+            {" "}
+            <span className="font-bold">Review: </span>
+            <small>{review}</small>
+          </p>
+          <p>
+            Tag: <span className="text-green-500 font-bold">#{tags}</span>
+          </p>
+          <hr />
+          <p>
+            <span>Number of Pages: {totalPages}</span>
+          </p>
+          <p>Publisher: {publisher}</p>
+          <p>Year of Publishing: {yearOfPublishing}</p>
+          <p>Rating: {rating}</p>
+          <div className="card-actions">
+            <button className="btn btn-outline mr-2 btn-primary">Read</button>
+            <button className="btn btn-primary">WishList</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
