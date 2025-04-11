@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { addToStoreReadList } from "../../utility/addToDb";
+import { Helmet } from "react-helmet-async";
 
 const BookDetail = () => {
   const { bookId } = useParams();
@@ -39,6 +40,9 @@ const BookDetail = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Book Detail | {bookId}</title>
+      </Helmet>
       <h2>Book Number: {bookId}</h2>
       <div className="card lg:card-side bg-base-100 shadow-sm">
         <figure>
